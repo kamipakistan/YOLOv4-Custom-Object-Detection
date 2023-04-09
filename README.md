@@ -30,6 +30,7 @@ Next, we'll check if Tensorflow can connect to the GPU: By executing the followi
 # Check if NVIDIA GPU is enabled
 !nvidia-smi
 ```
+<img src = https://user-images.githubusercontent.com/76246927/230774198-81397660-b080-4f40-8778-937b7350e15f.png width = 500, height = 300>
 
 ```
 # verify CUDA

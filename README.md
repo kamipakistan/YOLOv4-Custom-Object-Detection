@@ -108,7 +108,7 @@ Labels of our objects should be saved in **YOLOV4_Custom/custom.names** file, ea
 with_mask
 without_mask
 ```
-# **Step 5**
+# **Step 6**
 ## *Creating Train and Test files*
 The annotated photos can then be randomly split into train and test sets in a **90:10** ratio.
 
@@ -145,7 +145,7 @@ You can download the process.py script from my GitHub.
 ```
 
 
-# **Step 6**
+# **Step 7**
 ## *Creating YOLO data file*
 Make a file called `detector.data` in the `YOLOV4_Custom` directory that contains details about the train and test data sets.
 
@@ -157,7 +157,7 @@ names = YOLOV4_Custom/obj.names
 backup = YOLOV4_Custom/backup
 ```
 
-# **Step 7**
+# **Step 8**
 ## *Cloning Directory to use Darknet*
 Darknet, an open source neural network framework, will be used to train the detector. Download and create a dark network
 
@@ -166,7 +166,7 @@ Darknet, an open source neural network framework, will be used to train the dete
 !git clone https://github.com/AlexeyAB/darknet
 ```
 
-# **Step 8** 
+# **Step 9** 
 ## *Make changes in the `makefile` to enable OPENCV and GPU*
 
 # change makefile to have GPU and OPENCV enabled
@@ -186,7 +186,7 @@ Darknet, an open source neural network framework, will be used to train the dete
 !make
 ```
 
-# **Step 9**
+# **Step 10**
 ## *Making changes in the yolo Configuration file*
 
 Download the `yolov4-custom.cfg` file from `darknet/cfg` directory, make changes to it, and upload it to the `YOLOV4_Custom` folder on your drive .
@@ -210,7 +210,7 @@ Download the `yolov4-custom.cfg` file from `darknet/cfg` directory, make changes
 Save the file after making all these changes, and upload it to the `YOLOV4_Custom` folder on your drive .
 
 
-# **Step 10**
+# **Step 11**
 ## *Downloading Pre-trained weights*
 To train our object detector, we can use the pre-trained weights that have already been trained on a large data sets.
 ```Python
@@ -221,7 +221,7 @@ To train our object detector, we can use the pre-trained weights that have alrea
 !wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137
 ```
 
-# **Step 11**
+# **Step 12**
 ## *Training the model*
 As soon as we have all the necessary files and annotated photographs, we can begin our training.
 Up till the loss reaches a predefined level, we can keep training. Weights for the custom detector are initially saved once every 100 iterations until 1,000 iterations, after which they are saved once every 10,000 iterations by default.
@@ -243,7 +243,7 @@ Continue training from where you left off, your Model training can be stopped du
 !./darknet detector train {HOME}/obj.data {HOME}/yolov4-custom.cfg {HOME}/backup/yolov4-custom_last.weights  -dont_show -map
 ```
 
-#  **Step 12**
+#  **Step 13**
 ## *Check performance* 
 
 ```Python
@@ -281,7 +281,7 @@ imShow('chart.png')
 !./darknet detector map {HOME}/obj.data {HOME}/yolov4-custom.cfg {HOME}/backup/yolov4-custom_best.weights -points 0
 ```
 
-# **Step 13** 
+# **Step 14** 
 ## *Test your custom Object Detector*
 
 **Make changes to your custom config file**

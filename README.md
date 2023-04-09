@@ -132,7 +132,7 @@ This *`process.py`* script creates the files *`train.txt`* & *`test.txt`* where 
 
 You can download the process.py script from my GitHub.
 
-**Run *`process.py`***
+**Open `process.py` specify the path and then run it.**
 ```Python
 %cd {HOME }
 # run process.py ( this creates the train.txt and test.txt files in our darknet/data folder )

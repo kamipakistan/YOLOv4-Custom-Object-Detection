@@ -263,5 +263,41 @@ def imShow(path):
 imShow('chart.png')
 ```
 
+<img src="https://user-images.githubusercontent.com/76246927/230772096-1dcd8dc6-d092-4b1f-8b78-baeaac43f51a.png" width="500" height="500">
+
+**Check mAP (mean average precision)**
+```Python
+#You can check the mAP for all the saved weights to see which gives the best results 
+%cd {HOME}/darknet
+!./darknet detector map {HOME}/obj.data {HOME}/yolov4-custom.cfg {HOME}/backup/yolov4-custom_best.weights -points 0
+```
+
+# **Step 13** 
+## *Test your custom Object Detector*
+
+**Make changes to your custom config file**
+*   change line batch to batch=1
+*   change line subdivisions to subdivisions=1
+
+You can do it either manually or by simply running the code below
+```Python
+#set your custom cfg to test mode 
+%cd {HOME}
+!sed -i 's/batch=64/batch=1/' yolov4-custom.cfg
+!sed -i 's/subdivisions=16/subdivisions=1/' yolov4-custom.cfg
+```
+
+## *Run detector on an image*
+
+```Python
+# run your custom detector with this command (upload an image to your google drive to test, the thresh flag sets the minimum accuracy required for object detection)
+%cd {HOME}/darknet
+!./darknet detector test {HOME}/obj.data {HOME}/yolov4-custom.cfg {HOME}/backup/yolov4-custom_best.weights {HOME}/player.jpg -thresh 0.5 
+```
+
+```Python
+imShow('predictions.jpg')
+```
+<img src = https://user-images.githubusercontent.com/76246927/230772373-2ee93f61-25db-4e6b-aa76-40a3c9e80767.jpg> 
 
 

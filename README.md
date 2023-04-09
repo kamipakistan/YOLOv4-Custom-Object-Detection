@@ -6,6 +6,15 @@
 
 
 # YOLOv4 Custom Object Detection
+YOLOv4 is a state-of-the-art real-time object detection algorithm that stands for "You Only Look Once version 4". It was developed by a group of researchers at the University of Washington and was released in 2020.
+
+YOLOv4 builds upon the success of its predecessors, YOLOv3 and YOLOv2, and incorporates several advancements to improve the accuracy and speed of object detection. It is considered one of the best object detection models available, with the ability to detect objects in real-time video streams, making it suitable for a wide range of applications, including security, autonomous driving, and robotics.
+
+YOLOv4 is a deep learning model that utilizes convolutional neural networks (CNNs) and a single-shot detection approach, meaning that it processes the entire image at once to detect objects instead of segmenting the image into smaller parts. This makes it much faster than other object detection algorithms.
+
+Additionally, YOLOv4 uses a novel architecture that includes multiple backbones and prediction heads to improve the accuracy of object detection. It also employs advanced data augmentation techniques and incorporates techniques such as focal loss, spatial pyramid pooling, and self-adversarial training to enhance the model's performance.
+
+Overall, YOLOv4 is a highly effective and efficient object detection algorithm that is widely used in computer vision applications. In this blog, we will explore how to use YOLOv4 for custom object detection, allowing you to train the model to recognize objects specific to your needs.
 
 # **Step 1**
 ## Enabling and testing the GPU

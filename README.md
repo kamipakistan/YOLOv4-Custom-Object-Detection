@@ -310,4 +310,4 @@ imShow('predictions.jpg')
 ```
 <img src = https://user-images.githubusercontent.com/76246927/230772373-2ee93f61-25db-4e6b-aa76-40a3c9e80767.jpg> 
 
-
+To perform detection realtime see inferece files directory

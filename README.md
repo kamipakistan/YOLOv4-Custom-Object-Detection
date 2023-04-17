@@ -47,7 +47,6 @@ drive.mount('/content/gdrive')
 Let's make the required files and directories one by one for training with custom objects.
 
 1. **YOLOV4_Custom**
-1. **YOLOV4_Custom/images**
 2. **YOLOV4_Custom/custom.names** 
 3. **YOLOV4_Custom/train.txt**
 4. **YOLOV4_Custom/test.txt**

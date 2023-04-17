@@ -139,25 +139,22 @@ grape leaf black rot
 
 # **Step 6**
 ## *Creating Train and Test files*
-The annotated photos can then be randomly split into train and test sets in a **90:10** ratio.
-
-**YOLOV4_Custom/train.txt** The location of the train dataset should be listed in each file row.
-
-**YOLOV4_Custom/test.txt** The location of the test dataset should be listed in each file row.
-
-
+After uploading and unzipping the dataset, the annotated images should be split into train and test sets with a ratio of **80:20**. The location of the images in the train and test sets should be listed in separate files: **YOLOV4_Custom/train.txt** and **YOLOV4_Custom/test.txt**. Each file row should contain the location of one image in the respective dataset. These files will be used during training to access the images in the correct location.
 
 ```
-YOLOV4_Custom/images/0211d7dcb0aa6d66.jpg
-YOLOV4_Custom/images/02e3c15f755cf2f9.jpg
-YOLOV4_Custom/images/03b72249aed1fef0.jpg
-YOLOV4_Custom/images/0561cd46d01b21ff.jpg
-YOLOV4_Custom/images/05fa9bdfbd9204ab.jpg
+../PlantDisease416x416/train/Image416_1912.jpg
+../PlantDisease416x416/train/testImage416_215.jpg
+../PlantDisease416x416/train/Image416_673.jpg
+../PlantDisease416x416/train/Image416_1635.jpg
+../PlantDisease416x416/train/Image416_1824.jpg
+../PlantDisease416x416/train/Image416_1023.jpg
+../PlantDisease416x416/train/Image416_23.jpg
+../PlantDisease416x416/train/Image416_2226.jpg
 ```
 
-To divide all image files into 2 parts. 90% for train and 10% for test, Upload the *`process.py`* in *`YOLOV4_Custom`* directory
+To divide all image files into 2 parts. 80% for train and 20% for test, Upload the *`process.py`* in *`YOLOV4_Custom`* directory
 
-This *`process.py`* script creates the files *`train.txt`* & *`test.txt`* where the *`train.txt`* file has paths to 90% of the images and *`test.txt`* has paths to 10% of the images.
+This *`process.py`* script creates the files *`train.txt`* & *`test.txt`* where the *`train.txt`* file has paths to 80% of the images and *`test.txt`* has paths to 20% of the images.
 
 You can download the process.py script from my GitHub.
 
@@ -175,16 +172,24 @@ You can download the process.py script from my GitHub.
 
 
 # **Step 7**
-## *Creating YOLO data file*
-Make a file called `detector.data` in the `YOLOV4_Custom` directory that contains details about the train and test data sets.
+## *Creating Configuration file for YOLOv4 model training*
+Make a file called `detector.data` in the `YOLOV4_Custom` directory.
 
 ```
-classes = 2
-train = YOLOV4_Custom/train.txt
-valid = YOLOV4_Custom/test.txt
-names = YOLOV4_Custom/obj.names
-backup = YOLOV4_Custom/backup
+
+classes = 30
+train = ../train.txt
+valid = ../test.txt
+names = ../custom.names
+backup = ../backup
 ```
+
+* The classes variable indicates the total number of object classes (in this case, 30).
+* train and valid variables point to the text files containing the file paths for the training and validation sets, respectively.
+* The names variable points to the file containing the names of the object classes, with one class per line.
+* Finally, backup points to the directory where the weights of the model will be saved during training.
+
+
 
 # **Step 8**
 ## *Cloning Directory to use Darknet*
@@ -208,8 +213,16 @@ Darknet, an open source neural network framework, will be used to train the dete
 !sed -i 's/CUDNN_HALF=0/CUDNN_HALF=1/' Makefile
 !sed -i 's/LIBSO=0/LIBSO=1/' Makefile
 ```
+* The `%cd {HOME}/darknet/` command changes the current directory to the darknet directory in the HOME directory.
+
+* The first command replaces the string OPENCV=0 with OPENCV=1 in the Makefile. This is done to enable OpenCV support in Darknet, which is necessary for some image-related tasks.
+* The second command replaces the string GPU=0 with GPU=1 in the Makefile. This is done to enable GPU acceleration in Darknet, which can greatly speed up training and inference.
+* The third command replaces the string CUDNN=0 with CUDNN=1 in the Makefile. This is done to enable cuDNN support in Darknet, which is an NVIDIA library that provides faster implementations of neural network operations.
+* The fourth command replaces the string CUDNN_HALF=0 with CUDNN_HALF=1 in the Makefile. This is done to enable mixed-precision training in Darknet, which can further speed up training and reduce memory usage.
 
 ## *Run `make` command to build darknet*
+The `!make` command is a Linux command-line instruction that invokes the make utility to compile and build the Darknet codebase based on the configurations specified in the Makefile. This command reads the Makefile in the current directory and compiles the source code by executing various build commands specified in the Makefile. After the compilation process is complete, the make utility generates an executable binary file that can be used to run various Darknet commands and utilities.
+
 ```Python
 # build darknet 
 !make

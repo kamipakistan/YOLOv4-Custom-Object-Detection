@@ -242,14 +242,15 @@ Download the `yolov4-custom.cfg` file from `darknet/cfg` directory, make changes
 3. `width = 416` (has to be multiple of 32, increase height and width will increase accuracy but training speed will slow down).  (at line 8)
 4. `height = 416` (has to be multiple of 32).  (at line 9)
 
-5. `max_batches = 10000` (num_classes*2000 but if classes are less then or equal to 3 put `max_batches = 6000`)  (at line 20)
+5. `max_batches = 60000` (num_classes*2000 but if classes are less then or equal to 3 put `max_batches = 6000`)  (at line 20)
 
-6. `steps = 8000, 9000` (80% of max_batches), (90% of max_batches) (at line 22)
+6. `steps = 48000, 54000` (80% of max_batches), (90% of max_batches) (at line 22)
  
-7. `classes = 2` (Number of your classes) (at line 970, 1058, 1146)
-8. `filters = 21` ( (num_classes + 5) * 3 )  (at line 963, 1051, 1139)
+7. `classes = 30` (Number of your classes) (at line 970, 1058, 1146)
+8. `filters = 105` ( (num_classes + 5) * 3 )  (at line 963, 1051, 1139)
 
 Save the file after making all these changes, and upload it to the `YOLOV4_Custom` folder on your drive .
+
 
 
 # **Step 11**
@@ -349,6 +350,6 @@ You can do it either manually or by simply running the code below
 ```Python
 imShow('predictions.jpg')
 ```
-<img src = https://user-images.githubusercontent.com/76246927/230772373-2ee93f61-25db-4e6b-aa76-40a3c9e80767.jpg> 
+
 
 To perform detection realtime see inferece files directory

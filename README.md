@@ -88,26 +88,55 @@ os.mkdir("backup")
 ```
 
 # **Step 4**
-### Unzip Files
+# Upload and Unzip Files
+I am going to train a YOLOv4 model on the Plant Disease Detection dataset, which is publicly available for download from this [link](https://www.kaggle.com/datasets/kamipakistan/plant-diseases-detection-dataset). This dataset is a collection of images of plants that have been labeled as healthy or diseased with one of 30 different diseases. The dataset was created by a group of researchers at the Indian Institute of Technology and is intended for use in training machine learning models for plant disease detection. By training a YOLOv4 model on this dataset, I hope to create an accurate and efficient system for detecting plant diseases early, which can help improve crop yields and prevent significant losses for farmers.
 
-* Where you wish to extract the zip file from Google Drive as shown by the path in the cell below.
-
-
-In our case text files should be saved in **YOLOV4_Custom/images** directory. For e.g. **image1.jpg** should have a text file **image1.txt**.
+*I first uploaded the dataset to my Google Drive and then unzipped it in the main 'YOLOV4_Custom' directory with the following `unzip`command.*
 
 ```Python
 %cd {HOME}
-!unzip "dataset.zip"
+!unzip "PlantDisease416x416.zip"
 ```
 
 # **Step 5**
 ## *Creating Custom.names file*
-Labels of our objects should be saved in **YOLOV4_Custom/custom.names** file, each line in the file corresponds to an object. In our case since we have two object class, the file should contain the following.
+To ensure that our YOLOv4 model can accurately identify the 30 different classes of objects in our dataset, we need to save the labels of these objects in a file called **`custom.names`**, which should be saved inside the **'YOLOV4_Custom'** directory. Each line in this file corresponds to one of the object classes in our dataset. In our case, since we have 30 different classes of plant diseases and healthy plants, the 'custom.names' file should contain one line for each of these 30 classes, so that our model can correctly recognize and classify them.
 
+**custom.names**
 ```
-with_mask
-without_mask
+Apple Scab Leaf
+Apple leaf
+Apple rust leaf
+Bell_pepper leaf
+Bell_pepper leaf spot
+Blueberry leaf
+Cherry leaf
+Corn Gray leaf spot
+Corn leaf blight
+Corn rust leaf
+Peach leaf
+Potato leaf
+Potato leaf early blight
+Potato leaf late blight
+Raspberry leaf
+Soyabean leaf
+Soybean leaf
+Squash Powdery mildew leaf
+Strawberry leaf
+Tomato Early blight leaf
+Tomato Septoria leaf spot
+Tomato leaf
+Tomato leaf bacterial spot
+Tomato leaf late blight
+Tomato leaf mosaic virus
+Tomato leaf yellow virus
+Tomato mold leaf
+Tomato two spotted spider mites leaf
+grape leaf
+grape leaf black rot
 ```
+
+
 # **Step 6**
 ## *Creating Train and Test files*
 The annotated photos can then be randomly split into train and test sets in a **90:10** ratio.

@@ -203,9 +203,10 @@ Darknet, an open source neural network framework, will be used to train the dete
 # **Step 9** 
 ## *Make changes in the `makefile` to enable OPENCV and GPU*
 
+```Python
 # change makefile to have GPU and OPENCV enabled
 # also set CUDNN, CUDNN_HALF and LIBSO to 1
-```Python
+
 %cd {HOME}/darknet/
 !sed -i 's/OPENCV=0/OPENCV=1/' Makefile
 !sed -i 's/GPU=0/GPU=1/' Makefile
